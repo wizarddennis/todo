@@ -31,3 +31,4 @@ generated-cra-app
 .cra-template-rb
 template
 .eslintcache
+src/app/__tests__/__snapshots__/index.test.tsx.snap
