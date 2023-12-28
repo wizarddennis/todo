@@ -19,10 +19,32 @@ const Input = styled.input`
 // import * as React from 'react'; 를 맨위에 넣지 않으면 아래 에러가 뜬다.
 // TS2686: 'React' refers to a UMD global, but the current file is a module. Consider adding an import instead.
 // 다른 파일에서 import 할수 있도록 export default 달아줌.
-export default function TodoInput() {
+export default function TodoInput({
+  setTodoList,
+}: {
+  setTodoList: (todo: ITodoItem) => void;
+}) {
+  const [content, setContent] = React.useState<string>('');
+
   return (
     <Box>
-      <Input placeholder="여기다가 할일을 입력하세요." />
+      <Input
+        placeholder="여기다가 할일을 입력하세요."
+        value={content}
+        onChange={e => setContent(e.target.value)}
+        // onKeyPress 는 deprecated라고해서 onKeyDown을 사용함.
+        onKeyDown={e => {
+          if (content === '') return;
+          if (e.key !== 'Enter' && e.key !== 'NumpadEnter') return;
+          setTodoList({
+            id: '0',
+            content: content,
+            completed: false,
+            editing: false,
+          });
+          setContent('');
+        }}
+      />
     </Box>
   );
 }

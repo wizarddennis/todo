@@ -1,4 +1,5 @@
-import * as React from 'react';
+//import * as React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import styled from 'styled-components';
 
@@ -28,11 +29,32 @@ const Title = styled.h1`
 
 const TodoList = styled.div``;
 
-const TodoCheck = styled.input`
-  margin-right: 15px;
-`;
-
 export function HomePage() {
+  // React를 빼고 싶으면...상단에...import시 아래와 같이 사용하면 됨.
+  //import React, { useState } from 'react';
+
+  // const [todoList, setTodoList] = React.useState<ITodoItem[]>([
+  const [todoList, setTodoList] = useState([
+    {
+      id: '1',
+      content: '첫번째 투두',
+      completed: true,
+      editing: false,
+    },
+    {
+      id: '2',
+      content: '두번째 투두',
+      completed: false,
+      editing: false,
+    },
+    {
+      id: '3',
+      content: '세번째 투두',
+      completed: false,
+      editing: false,
+    },
+  ]);
+
   return (
     <>
       <Helmet>
@@ -42,32 +64,13 @@ export function HomePage() {
       <Wrapper>
         <Box>
           <Title>할일</Title>
-          <TodoInput />
+          <TodoInput
+            setTodoList={(todo: ITodoItem) => setTodoList([todo, ...todoList])}
+          />
           <TodoList>
-            <TodoItem
-              todo={{
-                id: '1',
-                completed: true,
-                content: '투두입니다..1',
-                editing: false,
-              }}
-            ></TodoItem>
-            <TodoItem
-              todo={{
-                id: '2',
-                completed: true,
-                content: '투두입니다..2',
-                editing: false,
-              }}
-            ></TodoItem>
-            <TodoItem
-              todo={{
-                id: '3',
-                completed: false,
-                content: '투두입니다..3',
-                editing: false,
-              }}
-            ></TodoItem>
+            {todoList.map(todo => (
+              <TodoItem todo={todo} />
+            ))}
           </TodoList>
         </Box>
       </Wrapper>
