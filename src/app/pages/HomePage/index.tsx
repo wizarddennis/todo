@@ -44,7 +44,30 @@ export function HomePage() {
           <Title>할일</Title>
           <TodoInput />
           <TodoList>
-            <TodoItem></TodoItem>
+            <TodoItem
+              todo={{
+                id: '1',
+                completed: true,
+                content: '투두입니다..1',
+                editing: false,
+              }}
+            ></TodoItem>
+            <TodoItem
+              todo={{
+                id: '2',
+                completed: true,
+                content: '투두입니다..2',
+                editing: false,
+              }}
+            ></TodoItem>
+            <TodoItem
+              todo={{
+                id: '3',
+                completed: false,
+                content: '투두입니다..3',
+                editing: false,
+              }}
+            ></TodoItem>
           </TodoList>
         </Box>
       </Wrapper>
