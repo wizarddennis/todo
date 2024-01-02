@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Block from '../Block';
 import Checkbox from '../Checkbox';
+import CircleButton from '../Button/CircleButton';
 
 const Box = styled.div`
   display: flex;
@@ -33,6 +34,8 @@ export default function TodoItem({ todo }: { todo: ITodoItem }) {
       <Checkbox checked={todo.completed} />
       <Block marginLeft="10px" />
       <TodoContent checked={todo.completed}>{todo.content}</TodoContent>
+      {/* 아이콘을 Prop 으로 보내는 방식을 사용함. */}
+      <CircleButton />
     </Box>
   );
 }
