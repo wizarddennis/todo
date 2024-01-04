@@ -17,6 +17,18 @@ const Circle = styled.div`
   }
 `;
 
-export default function CircleButton() {
-  return <Circle></Circle>;
+export default function CircleButton({
+  className,
+  onClick,
+  Icon,
+}: {
+  className?: string;
+  onClick: () => void;
+  Icon: () => React.JSX.Element;
+}) {
+  return (
+    <Circle onClick={onClick} className={className}>
+      <Icon />
+    </Circle>
+  );
 }

@@ -39,19 +39,19 @@ export function HomePage() {
       id: '1',
       content: '첫번째 투두',
       completed: true,
-      editing: false,
+      editing: true,
     },
     {
       id: '2',
       content: '두번째 투두',
       completed: false,
-      editing: false,
+      editing: true,
     },
     {
       id: '3',
       content: '세번째 투두',
       completed: false,
-      editing: false,
+      editing: true,
     },
   ]);
 
